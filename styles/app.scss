@@ -87,6 +87,18 @@ section
 		width:100%; height:100%;
 	}
 }
+.lazy-load-image-background.opacity 
+{
+    opacity: 0;
+}
+  
+.lazy-load-image-background.opacity.lazy-load-image-loaded 
+{
+    opacity: 1;
+    transition: opacity .3s;
+}
+
+  
 img.placeholder
 {
     background-color:#EEE;
@@ -226,4 +238,32 @@ button.disabled, a.disabled
 		cursor:default;
 		pointer-events:none;
 	}
+}
+.pagination
+{
+    display: flex;
+    justify-content: center;
+    padding:0 0 40px 0;
+
+    .MuiPaginationItem-root
+    {
+        @include themify(false)
+        {
+            color: themed('menuTextColor');
+        }
+    }
+    .MuiPaginationItem-page.Mui-selected
+    {
+        @include themify(false)
+        {
+            background-color: themed('buttonSelected');
+        }
+    }
+    .MuiPaginationItem-page:hover
+    {
+        @include themify(false)
+        {
+            background-color: themed('buttonHover');
+        }
+    }
 }

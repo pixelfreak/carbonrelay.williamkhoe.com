@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Pagination from '@material-ui/lab/Pagination';
 import Head from 'next/head'
 import Layout from '../components/layout';
 import SearchBox from '../components/search-box';
@@ -9,7 +10,8 @@ import { useSearch } from '../lib/tmdb';
 export default function Search()
 {
     const [query, setQuery] = useState('');
-    const [data] = useSearch(query);
+    const [page, setPage] = useState(1);
+    const [data] = useSearch(query, page);
 
     return (
         <Layout>
@@ -20,9 +22,17 @@ export default function Search()
             <section className={css['search']}>
                 <div className={css['content']}>
                     <header>
-                        <SearchBox onChange={(value) => setQuery(value) } placeholder="Search for a movie..."/>
+                        <SearchBox autoFocus onChange={(value) => { setQuery(value); setPage(1); /* TODO: This will cause multiple side-effects because it's coming from a non-React based event (setTimeout). Change to reducer if performance is an issue. */ } } placeholder="Search for a movie..."/>
                     </header>
                     <Movies data={(data) ? data.results : null}/>
+                    {(data) ?
+                        <div className="pagination">
+                            <Pagination count={data.total_pages} page={page} size="large" onChange={(e, value) => { setPage(value); }}/>
+                        </div>
+                        :
+                        <></>
+                    }
+                    
                 </div>
             </section>
         </Layout>

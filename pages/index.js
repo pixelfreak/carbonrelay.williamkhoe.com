@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Pagination from '@material-ui/lab/Pagination';
 import Head from 'next/head'
 import Layout from '../components/layout';
 import { useMovies } from '../lib/tmdb';
@@ -6,6 +7,11 @@ import css from '../styles/movies.module.scss';
 import Movies from '../components/movies';
 
 const initialCategory = 'popular';
+const categories = [
+    { key: 'popular', name: 'Popular' },
+    { key: 'top_rated', name: 'Top Rated' },
+    { key: 'now_playing', name: 'Now Playing' },
+];
 
 export async function getServerSideProps()
 {
@@ -23,7 +29,8 @@ export async function getServerSideProps()
 export default function Home({ initialMovies })
 {
     const [activeCategory, setActiveCategory] = useState(initialCategory);
-    const [movies] = useMovies(activeCategory, initialMovies);
+    const [page, setPage] = useState(1);
+    const [movies] = useMovies(activeCategory, page, initialMovies);
 
     return (
         <Layout>
@@ -35,12 +42,15 @@ export default function Home({ initialMovies })
                 <div className="content">
                     <header>
                         <nav>
-                            <button className={(activeCategory === 'popular') ? css.active : ''} onClick={() => setActiveCategory('popular')}>Popular</button>
-                            <button className={(activeCategory === 'top_rated') ? css.active : ''} onClick={() => setActiveCategory('top_rated')}>Top Rated</button>
-                            <button className={(activeCategory === 'now_playing') ? css.active : ''} onClick={() => setActiveCategory('now_playing')}>Now Playing</button>
+                            {categories.map(category =>
+                                <button key={category.key} className={(activeCategory === category.key) ? css.active : ''} onClick={() => { setActiveCategory(category.key); setPage(1); } }>{category.name}</button>
+                            )}
                         </nav>
                     </header>
                     <Movies data={movies.results}/>
+                    <div className="pagination">
+                        <Pagination count={movies.total_pages} page={page} size="large" onChange={(e, value) => { setPage(value); }}/>
+                    </div>
                 </div>
             </section>
         </Layout>

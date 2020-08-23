@@ -7,40 +7,39 @@ section.movie-browser
         display:flex;
         justify-content: space-between; align-items: center;
         padding:20px 0 24px 0;
-    }
-
-    nav
-    {
-        display:flex;
-        align-items: center;
-
-        button
+        nav
         {
-            margin:0 24px 0 0; padding:8px 0;
-            font-size:1.2em;
-            cursor: pointer;
-            transition: border-color .2s;
-            color:#999;
-            border-bottom:3px solid transparent;
+            display:flex;
+            align-items: center;
 
-            @include themify() 
+            button
             {
-                color: themed('menuTextColor');
-            }
-
-            &:hover
-            {
-                filter: brightness(80%);
-                border-color: #14B5E0;
-            }
-
-            &.active
-            {
-                border-color: #14B5E0;
+                margin:0 24px 0 0; padding:8px 0;
+                font-size:1.2em;
+                cursor: pointer;
+                transition: border-color .2s;
+                color:#999;
+                border-bottom:3px solid transparent;
 
                 @include themify() 
                 {
-                    color: themed('menuTextColorActive');
+                    color: themed('menuTextColorInactive');
+                }
+
+                &:hover
+                {
+                    filter: brightness(80%);
+                    border-color: #14B5E0;
+                }
+
+                &.active
+                {
+                    border-color: #14B5E0;
+
+                    @include themify() 
+                    {
+                        color: themed('menuTextColorActive');
+                    }
                 }
             }
         }
