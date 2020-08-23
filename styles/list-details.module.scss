@@ -1,0 +1,24 @@
+section.list-details
+{
+    .action
+    {
+        margin:0 0 30px 0;
+        button
+        {
+            margin:0 10px 0 0;
+        }
+    }
+}
+
+.no-results
+{
+    height:300px;
+    padding:30px 55px;
+    border-radius:8px;
+    background:url('https://www.themoviedb.org/assets/2/v4/account_pipes/silver-251bf173c626c8be6f61efdd85b7009a83b2f9dfa60b80b182351a02fa2a57ec.svg') no-repeat center -250px;
+
+    h3
+    {
+        font-size:2em; font-weight:300;
+    }
+}

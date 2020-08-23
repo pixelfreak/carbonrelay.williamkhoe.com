@@ -1,0 +1,95 @@
+@use 'variables.scss' as *;
+
+section.movie-browser
+{
+    header
+    {
+        display:flex;
+        justify-content: space-between; align-items: center;
+        padding:20px 0 24px 0;
+    }
+
+    nav
+    {
+        display:flex;
+        align-items: center;
+
+        button
+        {
+            margin:0 24px 0 0; padding:8px 0;
+            font-size:1.2em;
+            cursor: pointer;
+            transition: border-color .2s;
+            color:#999;
+            border-bottom:3px solid transparent;
+
+            @include themify() 
+            {
+                color: themed('menuTextColor');
+            }
+
+            &:hover
+            {
+                filter: brightness(80%);
+                border-color: #14B5E0;
+            }
+
+            &.active
+            {
+                border-color: #14B5E0;
+
+                @include themify() 
+                {
+                    color: themed('menuTextColorActive');
+                }
+            }
+        }
+    }
+}
+
+.movies
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-auto-rows: auto;
+    gap: 30px;
+    margin:0 0 40px 0;
+    
+    .movie
+    {
+        cursor:pointer;
+        transition: transform .18s;
+
+        h2
+        {
+            margin:12px 0 0 0;
+            font-size:1em;
+        }
+
+        &:hover
+        {
+            transform:scale(1.1);
+        }
+    }
+}
+
+img.poster-image
+{
+    display: block;
+    width:100%;
+    object-fit: cover;
+    border-radius:8px;
+}
+
+.no-results
+{
+    height:300px;
+    padding:30px 55px;
+    border-radius:8px;
+    background:url('https://www.themoviedb.org/assets/2/v4/account_pipes/silver-251bf173c626c8be6f61efdd85b7009a83b2f9dfa60b80b182351a02fa2a57ec.svg') no-repeat center -250px;
+
+    h3
+    {
+        font-size:2em; font-weight:300;
+    }
+}

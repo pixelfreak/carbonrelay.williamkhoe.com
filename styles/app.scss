@@ -1,0 +1,229 @@
+@use 'variables.scss' as *;
+
+*, :before, :after
+{
+    box-sizing:border-box;
+}
+html, body
+{
+    margin:0; padding:0;
+    font-family:'Source Sans Pro', sans-serif; font-weight:300;
+}
+input, button
+{
+    font-family:'Source Sans Pro', sans-serif; font-size:1em;
+}
+figure
+{
+    margin:0; padding:0;
+}
+h1
+{
+    margin:0; padding:26px 0;
+    font-size:1.8em; font-weight:600;
+}
+h1,h2,h3,h4,h5,h6
+{
+    margin-block-start:0; margin-block-end:0;
+    transition:color .3s;
+}
+section > div > header
+{
+    display:flex;
+    justify-content: space-between; align-items: center;
+    padding:20px 0;
+    
+    h1,h2,h3,h4,h5,h6
+    {
+        @include themify(false)
+        {
+            color: themed('heading');
+        }
+    }
+}
+a
+{
+    color:#0BB4E4;
+    text-decoration: none;
+}
+p
+{
+    margin:0;
+    transition:color .3s;
+}
+button
+{
+    border:0;
+    background:none;
+    outline:none;
+    cursor: pointer;
+}
+main
+{
+    padding:60px 0 0 0;
+    transition:background-color .3s;
+
+    @include themify(false)
+    {
+        background-color: themed('bg');
+        color: themed('text');
+    }
+}
+section
+{
+    > div
+    {
+        max-width: $bodyMaxWidth;
+        margin:0 auto; padding: 0 24px 30px 24px;
+    }
+}
+
+.lazy-load-image-background
+{
+	width:100%; height:auto;
+
+	> span
+	{
+		width:100%; height:100%;
+	}
+}
+img.placeholder
+{
+    background-color:#EEE;
+    border-radius:8px;
+}
+
+button.btn
+{
+    padding:10px 16px;
+    color:#FFF; font-weight:700;
+    background-color:#0BB4E4;
+    border-radius:10px;
+
+    &:hover
+    {
+        filter: brightness(90%);
+    }
+}
+button.btn-danger
+{
+    background-color:#F00;
+}
+
+form
+{
+    input
+    {
+        width:100%; height:40px;
+        padding:0 12px;
+        border:1px solid; border-radius:8px;
+        font-size:1em;
+
+        @include themify(false)
+        {
+            border-color:themed('inputBorder');
+        }
+    }
+    .input-group-text
+    {
+        display: block;
+        margin:0 0 5px 0;
+    }
+    .action
+    {
+        display:flex;
+        justify-content: flex-end;
+        padding:20px 0;
+    }
+    .error input
+    {
+        border-color:#F00;
+        background:#FCE6E2;
+    }
+}
+
+.spinner
+{
+	display:none;
+	width:39px;
+	text-align:center;
+  
+	> span
+	{
+	  width:10px;
+	  height:10px;
+	  background-color:#FFF;
+	
+	  border-radius: 100%;
+	  display: inline-block;
+	  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+	  animation: bouncedelay 1.4s infinite ease-in-out;
+	  /* Prevent first frame from flickering when animation starts */
+	  -webkit-animation-fill-mode: both;
+	  animation-fill-mode: both;
+	}
+
+	.bounce1
+	{
+		-webkit-animation-delay: -0.32s;
+		animation-delay: -0.32s;
+	}
+
+	.bounce2
+	{
+		-webkit-animation-delay: -0.16s;
+		animation-delay: -0.16s;
+	}
+}
+
+@-webkit-keyframes bouncedelay
+{
+	0%, 80%, 100% { -webkit-transform: scale(0.0) }
+	40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bouncedelay
+{
+	0%, 80%, 100%
+	{ 
+		transform: scale(0.0);
+		-webkit-transform: scale(0.0);
+	}
+	40%
+	{ 
+		transform: scale(1.0);
+		-webkit-transform: scale(1.0);
+	}
+}
+
+button.disabled, a.disabled
+{
+	pointer-events:none;
+}
+
+.loading
+{
+	button, input, textarea, select, label
+	{
+		cursor:default;
+		pointer-events:none;
+	}
+
+	button .text
+	{
+		display:none;
+		text-transform:uppercase;
+	}
+	button .spinner
+	{
+		display:inline-block;
+	}
+}
+.success
+{
+	button, input, textarea, select, label
+	{
+		cursor:default;
+		pointer-events:none;
+	}
+}

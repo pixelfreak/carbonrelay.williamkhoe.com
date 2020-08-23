@@ -1,0 +1,66 @@
+@use './variables.scss' as *;
+
+.search-box
+{
+    position: relative;
+    width:100%; height:42px;
+    margin:30px 0;
+    border:1px solid; border-radius:10px;
+
+    @include themify()
+    {
+        color: themed('inputBorder');
+    }
+
+    form
+    {
+        height:100%;
+    }
+    input[type='search']
+    {
+        padding:2px 36px 0 40px;
+        width:100%; height:100%;
+        background-color:transparent;
+        border:none;
+        font-size:.9em;
+
+        &::-webkit-search-cancel-button
+        {
+            display: none;
+        }
+
+        @include themify()
+        {
+            color: themed('input');
+        }
+    }
+    button[type='submit']
+    {
+        svg
+        {
+            position: absolute;
+            top:9px; left:9px;
+            width:22px; height:22px;
+            fill:#AAA;
+        }
+    }
+    button[type='reset']
+    {
+        svg
+        {
+            position: absolute;
+            top:14px; right:12px;
+            width:12px; height:12px;
+            fill:#AAA;
+        }
+    }
+    
+    ::placeholder
+    {
+        @include themify()
+        {
+            font-size:1.1em;
+            color: themed('inputPlaceholder');
+        }
+    }
+}

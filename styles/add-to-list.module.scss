@@ -1,0 +1,56 @@
+.lists
+{
+    background-color:#022541;
+    min-width: 200px;
+    padding:12px 12px 0 12px;
+    
+    button
+    {
+        display: block;
+        width:100%;
+        padding:16px;
+        color:#FFF;
+        text-align: left;
+        cursor:pointer;
+        border-radius:8px;
+
+        &:hover
+        {
+            background-color:#184F66;
+        }
+    }
+}
+
+.new-list
+{
+    display: flex;
+    align-items: stretch;
+    padding:0 12px 12px 12px;
+    background-color:#022541;
+
+    input
+    {
+        padding:16px;
+        border:0;
+        outline:none;
+        background-color:transparent;
+        color:#FFF;
+    }
+    button
+    {
+        display: block;
+        padding:0 20px;
+        background-color:#022541;
+        color:#FFF;
+        border-radius:8px;
+
+        &:hover
+        {
+            background-color:#184F66;
+        }
+    }
+    ::placeholder
+    {
+        color:#AAA;
+    }
+}

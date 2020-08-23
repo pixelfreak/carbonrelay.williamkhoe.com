@@ -1,0 +1,88 @@
+@import 'include-media.scss';
+
+$breakpoints: (small: 320px, medium: 768px, large: 1024px);
+
+$bodyMaxWidth: 1200px;
+
+$themes: 
+(
+    light: 
+    (
+        bg: #FFF,
+        headerBg: #032541,
+        footerBg: #032541,
+        menuIconFill: #FFF,
+        menuIconFillHover: #88C198,
+        headerLogoFill: #212121,
+        menuTextColor: #999,
+        menuTextColorActive: #032541,
+        heading: #000,
+        inputBorder: #999,
+        input: #000,
+        inputPlaceholder: #AAA,
+        buttonSelected: #EBEBEB,
+        buttonHover: #F6F6F6,
+        text: #000,
+        darkDisplayToggle: block,
+        lightDisplayToggle: none,
+    ),
+    dark: 
+    (
+        bg: #111,
+        headerBg: #222,
+        footerBg: #222,
+        menuIconFill: #FFF,
+        menuIconFillHover: #CCC,
+        headerLogoFill: #FFF,
+        menuTextColor: #999,
+        menuTextColorActive: #FFF,
+        heading: #FFF,
+        inputBorder: #333,
+        input: #FFF,
+        inputPlaceholder: #444,
+        buttonSelected: #555,
+        buttonHover: #444,
+        text: #FFF,
+        darkDisplayToggle: none,
+        lightDisplayToggle: block,
+    )
+);
+
+@mixin themify($global: true, $themes: $themes) 
+{
+    @each $theme, $map in $themes 
+    {
+        $selector: '';
+        @if $global
+        {
+            $selector: ':global(.theme-#{$theme})';
+        }
+        @else
+        {
+            $selector: '.theme-#{$theme}';
+        }
+
+        #{$selector} & 
+        {
+            $theme-map: () !global;
+            @each $key, $submap in $map 
+            {
+                $value: map-get(map-get($themes, $theme), '#{$key}');
+                $theme-map: map-merge($theme-map, ($key: $value)) !global;
+            }
+
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function themed($key) 
+{
+    @return map-get($theme-map, $key);
+}
+
+@function settings($key) 
+{
+    @return map-get($settings, $key);
+}

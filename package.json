@@ -1,0 +1,22 @@
+{
+  "name": "carbonrelay.williamkhoe.com",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "formik": "^2.1.5",
+    "moment": "^2.27.0",
+    "next": "9.5.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-lazy-load-image-component": "^1.5.0",
+    "sass": "^1.26.10",
+    "yup": "^0.29.3"
+  }
+}

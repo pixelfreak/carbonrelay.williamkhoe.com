@@ -1,0 +1,23 @@
+@use 'variables.scss' as *;
+
+footer.main
+{
+    @include themify
+    {
+        background-color: themed('footerBg');
+    }
+
+    .content
+    {
+        max-width: $bodyMaxWidth;
+        margin:0 auto; padding:6vw 24px;
+    }
+
+    .logo
+    {
+        img
+        {
+            width:7vw;
+        }
+    }
+}
