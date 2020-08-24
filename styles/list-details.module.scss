@@ -1,11 +1,56 @@
+@use 'variables.scss' as *;
+
 section.list-details
 {
-    .action
+    header
     {
-        margin:0 0 30px 0;
+        justify-content: space-between; align-items: stretch;
+
         button
         {
-            margin:0 10px 0 0;
+            display: flex;
+            justify-content: center; align-items: center;
+
+            svg
+            {
+                height: auto;
+            }
+
+            &:hover
+            {
+                filter:brightness(85%);
+            }
+        }
+        button.edit
+        {
+            margin:0 0 0 8px;
+            svg
+            {
+                width: 14px; 
+
+                @include themify()
+                {
+                    fill: themed('buttonFill');
+                }
+            }
+        }
+        button.delete
+        {
+            margin:0 0 0 2px;
+            svg
+            {
+                width: 16px;
+                
+                @include themify()
+                {
+                    fill: themed('buttonFill');
+                }
+            }
+        }
+
+        .action
+        {
+            display:flex;
         }
     }
 }

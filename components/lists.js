@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import moment from 'moment';
 import css from '../styles/lists.module.scss';
 
 function List({ data })
@@ -8,6 +9,7 @@ function List({ data })
             <div className={css['list']}>
                 <h2>{data.name}</h2>
                 <p>{data.movies.length} movies</p>
+                <p>Updated about: {moment(data.lastUpdated).fromNow()}</p>
             </div>
         </Link>
     );
