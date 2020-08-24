@@ -13,6 +13,6 @@ To run it in development:
 - [Next.js](https://nextjs.org/) is chosen for speed of development and its out-of-the-box features such as code-splitting, static/SSR/Serverless Functions, CSS-in-JS, and dynamic routing capabilites.
 
 # Assumptions
-- Edit list is not implemented.
-- Adding a movie to a list can only be done from the movie details page.
 - All data are stored in localStorage. No check is done if we hit the storage limit of 5-10MB.
+- Adding a movie to a list can only be done from the movie details page.
+- Currently no ability to rename list.
